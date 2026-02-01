@@ -113,8 +113,13 @@ This project includes automated quality checks that run on every pull request:
 
 All checks must pass before merging a pull request.
 
+📖 **See [CICD.md](CICD.md) for detailed documentation on the CI/CD pipelines, including how to run checks locally and troubleshoot common issues.**
+
+📝 **See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.**
+
 ## 📄 License
 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👤 Author
 
