@@ -1,5 +1,9 @@
 # Salesforce Flow Visualizer
 
+[![CI](https://github.com/Sanjivrajah/salesforce-flow-visualizer/workflows/CI/badge.svg)](https://github.com/Sanjivrajah/salesforce-flow-visualizer/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/Sanjivrajah/salesforce-flow-visualizer/workflows/CodeQL%20Security%20Scan/badge.svg)](https://github.com/Sanjivrajah/salesforce-flow-visualizer/actions/workflows/codeql.yml)
+[![Code Quality](https://github.com/Sanjivrajah/salesforce-flow-visualizer/workflows/Code%20Quality/badge.svg)](https://github.com/Sanjivrajah/salesforce-flow-visualizer/actions/workflows/code-quality.yml)
+
 A Visual Studio Code extension that renders Salesforce Flow metadata files (.flow-meta.xml) as interactive, detailed diagrams.
 
 ![Extension Icon](icon.png)
@@ -97,6 +101,17 @@ Search for "Salesforce Flow Visualizer" in the Extensions view
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+### CI/CD Pipeline
+
+This project includes automated quality checks that run on every pull request:
+
+- **CI Workflow**: Runs linting, TypeScript compilation, and builds on Node.js 18.x and 20.x
+- **CodeQL Security Scan**: Analyzes code for security vulnerabilities
+- **Dependency Review**: Checks for vulnerable dependencies and license compliance
+- **Code Quality**: Validates TypeScript types and analyzes bundle size
+
+All checks must pass before merging a pull request.
 
 ## 📄 License
 

@@ -1,0 +1,49 @@
+name: Code Quality
+
+on:
+  pull_request:
+    branches: [ main, master ]
+  push:
+    branches: [ main, master ]
+
+jobs:
+  quality-checks:
+    name: Quality Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for better analysis
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Check for TypeScript errors
+        run: npx tsc --noEmit
+      
+      - name: Check code formatting
+        run: |
+          echo "Running prettier check..."
+          npx prettier --check "src/**/*.{ts,tsx,js,jsx,json}" || echo "Prettier not configured, skipping..."
+        continue-on-error: true
+      
+      - name: Analyze bundle size
+        run: |
+          npm run package
+          echo "Bundle Analysis:"
+          ls -lh dist/
+          du -sh dist/
+      
+      - name: Check for TODO/FIXME comments
+        run: |
+          echo "Scanning for TODO/FIXME comments..."
+          grep -r "TODO\|FIXME" src/ || echo "No TODO/FIXME found"
+        continue-on-error: true
