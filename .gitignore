@@ -4,3 +4,10 @@ out
 *.vsix
 .vscode-test
 .DS_Store
+*.log
+*.log.*
+coverage
+.nyc_output
+.env
+.env.local
+*.tsbuildinfo
