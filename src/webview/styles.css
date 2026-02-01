@@ -1,0 +1,115 @@
+/* Global styles for the Flow Visualizer webview */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Loading state */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--vscode-editor-background);
+  color: var(--vscode-editor-foreground);
+}
+
+.loading-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid var(--vscode-button-background);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-container p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* React Flow overrides for Salesforce-like appearance */
+.react-flow {
+  background-color: #fafaf9;
+}
+
+.react-flow__node {
+  transition: all 0.2s ease;
+}
+
+.react-flow__node:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.react-flow__edge-path {
+  stroke-width: 2px;
+}
+
+.react-flow__edge-text {
+  fill: #3e3e3c;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.react-flow__edge-textbg {
+  fill: #ffffff;
+}
+
+.react-flow__controls {
+  background-color: #ffffff;
+  border: 1px solid #dddbda;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.react-flow__controls-button {
+  background-color: #ffffff;
+  color: #0176d3;
+  border: none;
+  border-bottom: 1px solid #dddbda;
+}
+
+.react-flow__controls-button:hover {
+  background-color: #f3f2f2;
+}
+
+.react-flow__controls-button svg {
+  fill: #0176d3;
+}
+
+.react-flow__minimap {
+  background-color: #f3f2f2;
+  border: 1px solid #dddbda;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.react-flow__attribution {
+  background-color: transparent;
+  opacity: 0.3;
+  font-size: 10px;
+}
+
+/* Custom node label styling */
+.react-flow__node-default {
+  font-family: 'Salesforce Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}

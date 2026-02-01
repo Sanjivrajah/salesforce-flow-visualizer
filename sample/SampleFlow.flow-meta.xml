@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Sample Flow for testing the Flow Visualizer extension</description>
+    <label>Sample Lead Conversion Flow</label>
+    <processType>AutoLaunchedFlow</processType>
+    
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Lead</targetReference>
+        </connector>
+    </start>
+
+    <recordLookups>
+        <name>Get_Lead</name>
+        <label>Get Lead</label>
+        <locationX>50</locationX>
+        <locationY>100</locationY>
+        <object>Lead</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Email</queriedFields>
+        <queriedFields>Company</queriedFields>
+        <connector>
+            <targetReference>Check_Lead_Score</targetReference>
+        </connector>
+    </recordLookups>
+
+    <decisions>
+        <name>Check_Lead_Score</name>
+        <label>Check Lead Score</label>
+        <locationX>50</locationX>
+        <locationY>200</locationY>
+        <defaultConnector>
+            <targetReference>Send_Low_Score_Email</targetReference>
+        </defaultConnector>
+        <rules>
+            <name>High_Score</name>
+            <label>High Score</label>
+            <conditionLogic>and</conditionLogic>
+            <connector>
+                <targetReference>Create_Opportunity</targetReference>
+            </connector>
+        </rules>
+        <rules>
+            <name>Medium_Score</name>
+            <label>Medium Score</label>
+            <conditionLogic>and</conditionLogic>
+            <connector>
+                <targetReference>Create_Task</targetReference>
+            </connector>
+        </rules>
+    </decisions>
+
+    <recordCreates>
+        <name>Create_Opportunity</name>
+        <label>Create Opportunity</label>
+        <locationX>150</locationX>
+        <locationY>300</locationY>
+        <object>Opportunity</object>
+        <connector>
+            <targetReference>Update_Lead_Status</targetReference>
+        </connector>
+    </recordCreates>
+
+    <recordCreates>
+        <name>Create_Task</name>
+        <label>Create Task</label>
+        <locationX>350</locationX>
+        <locationY>300</locationY>
+        <object>Task</object>
+        <connector>
+            <targetReference>Update_Lead_Status</targetReference>
+        </connector>
+    </recordCreates>
+
+    <actionCalls>
+        <name>Send_Low_Score_Email</name>
+        <label>Send Low Score Email</label>
+        <locationX>550</locationX>
+        <locationY>300</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+    </actionCalls>
+
+    <recordUpdates>
+        <name>Update_Lead_Status</name>
+        <label>Update Lead Status</label>
+        <locationX>250</locationX>
+        <locationY>400</locationY>
+        <object>Lead</object>
+    </recordUpdates>
+
+</Flow>
